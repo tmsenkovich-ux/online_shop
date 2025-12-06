@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy # імпортуємо SQLAlchemy для
 
 # це бібліотека для роботи з базами даних в об'єктно-реляційній манері
 
-db=SQULAlchemy() # створюємо об'єкт бази даних
+db=SQLAlchemy() # створюємо об'єкт бази даних
 
 class Product(db.Model): # модель продукту
     __tablename__='products' # назва таблиці

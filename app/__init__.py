@@ -1,4 +1,3 @@
-from app import create_app
 from flask import Flask # імпортуємо фласк
 import json
 import os
