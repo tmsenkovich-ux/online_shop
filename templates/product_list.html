@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>Product List</h1>
+    <h1>Product_list</h1>
+    <a href="{{ url_for('routes.add_product') }}">Add Product</a>
     <table border="1">
         <tr>
             <th>ID</th>
@@ -31,7 +32,3 @@
 </body>
 </html>
 
-## This file displays a list of products in a table format.
-## It uses Jinja2 templating to loop through a list of products passed from the Flask backend.
-## Each product's details such as ID, Name, Description, Price, Created At, and Updated At are shown in separate columns.
-## The table is styled with a border for better visibility.
