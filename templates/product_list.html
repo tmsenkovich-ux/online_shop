@@ -15,7 +15,12 @@
             <th>Price</th>
             <th>Created</th>
             <th>Updated</th>
-            
+
+            <th>Stock</th>
+            <th>is_active</th>
+            <th>Category</th>
+            <th>Rating</th>
+            <th>Sale</th>
         </tr>
        {% for product in products %}
         <tr>
@@ -25,6 +30,12 @@
             <th>{{ product.price }}</th>
             <th>{{ product.created_at }}</th>
             <th>{{ product.updated_at }}</th>
+
+            <th>{{ product.stock }}</th>
+            <th>{{ product.is_active }}</th>
+            <th>{{ product.category }}</th>     
+            <th>{{ product.rating }}</th>
+            <th>{{ product.sale }}</th>
             
         </tr> 
        {% endfor %}

@@ -25,7 +25,13 @@ def create_app(): # створюємо додаток
     app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
-    _ensure_columns(db_path, 'products', {'created_at': 'DATETIME', 'updated_at': 'DATETIME'})
+    _ensure_columns(db_path, 'products', {'created_at': 'DATETIME', 
+                                          'updated_at': 'DATETIME',
+                                            'stock': 'INTEGER',  
+                     'is_active': 'BOOLEAN',
+                     'category': 'TEXT',
+                     'rating': 'REAL',
+                     'sale': 'BOOLEAN'})
 
     
     
@@ -38,7 +44,7 @@ def create_app(): # створюємо додаток
     return app   # повертаємо створений додаток
 
 
-def _ensure_columns(sqlite_path, table, columns):
+def _ensure_columns(sqlite_path, table, columns):  # ЯКЩО НЕМА КОЛОНОнок в базі даних то додає їх
     """Ensure the given columns exist on the SQLite table; add them if missing.
 
 

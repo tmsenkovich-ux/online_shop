@@ -12,4 +12,21 @@ class Product(db.Model): # модель продукту
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
     description=db.Column(db.Text, nullable=True) # опис продукту
-    
+    stock = db.Column(db.Integer, nullable=False, default=0) # кількість на складі
+    is_active = db.Column(db.Boolean, default=True) # чи активний продукт
+    category = db.Column (db.String(50), nullable=True) # категорія продукту
+    rating = db.Column(db.Float, nullable=True, default=0) # рейтинг продукту
+    sale = db.Column(db.Boolean, nullable = True, default = False) # чи є знижка на продукт
+
+
+
+    #_ensure_columns(db_path, 'products',
+   #                 {'created_at': 'DATETIME',
+    #                 'updated_at': 'DATETIME',
+     #                'description': 'TEXT',
+   #                  'stock': 'INTEGER',  
+     #                'is_active': 'BOOLEAN',
+    #                 'category': 'TEXT',
+     #                'rating': 'REAL',
+     #                'sale': 'BOOLEAN'
+     #                })
