@@ -25,7 +25,7 @@ def create_app(): # створюємо додаток
     app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
-    _ensure_columns(db_path, 'products', {'created_at': 'DATETIME', 
+    _ensure_columns(db_path, 'products', { 'description': 'TEXT', 'created_at': 'DATETIME', 
                                           'updated_at': 'DATETIME',
                                             'stock': 'INTEGER',  
                      'is_active': 'BOOLEAN',

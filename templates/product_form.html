@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>{{ action }} Product</h1>
-    <form method="post">
+    <form method="post">             <!-- форма для додавання продукту -->
         <label> Name: 
             <input type="text" name="name" 
             value="{{ product.name if product else '' }}" required>
@@ -14,10 +14,45 @@
 
         <label> Price: 
             <input type="number" name="price"  step="0.01" 
-            value="{{ product.price if product else '' }}" required>
+            value="{{ product.price if product else '' }}" required>   
         </label> <br>
+
+        <label> Description: 
+            <input type="text" name="description" 
+            value="{{ product.description if product else '' }}" required>   
+        </label> <br>
+
+    
+        <label> Stock: 
+            <input type="number" name="stock" step="0.01"
+            value="{{ product.stock if product else '' }}" >
+        </label> <br>
+
+        <label>Active:
+        <input type="checkbox" name="is_active"
+               {% if product and product.is_active %}checked{% endif %}>
+        </label><br>
+        
+        
+
+        <label>Category:
+        <input type="text" name="category"
+               value="{{ product.category if product else '' }}" >
+        </label><br>
+
+        
+        <label> Rating: 
+            <input type="number" name="rating" step="0.01"
+            value="{{ product.rating if product else '' }}">
+        </label> <br>
+
+        <label> sale: 
+            <input type="checkbox" name="sale" step="0.01"
+            value="{{ product.sale if product else '' }}" >   
+        </label> <br>
+
 <button type = "submit">{{ action }}</button>        
     </form>
-    <a href ="{{url_for('routes.products')}}">Back to list</a>
+    <a href ="{{url_for('routes.products')}}">Back to list</a>   
 </body>
 </html>
