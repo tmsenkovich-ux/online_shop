@@ -46,9 +46,10 @@
             value="{{ product.rating if product else '' }}">
         </label> <br>
 
-        <label> sale: 
-            <input type="checkbox" name="sale" step="0.01"
-            value="{{ product.sale if product else '' }}" >   
+    
+        <label> sale:
+        <input type="checkbox" name="sale"
+               {% if product and product.sale %}checked{% endif %}>
         </label> <br>
 
 <button type = "submit">{{ action }}</button>        
