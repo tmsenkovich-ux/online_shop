@@ -3,6 +3,7 @@
       <head>
           <title>My shop</title>
               <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+          <link rel="icon" href="/favicon.png" type="image/png">    
       </head>
       <body>
             <h1>online shop!</h1>
@@ -15,13 +16,32 @@
         <div class="products">
             {% for product in products %}
             <div class="card">
-                   <img src="{{ url_for('static', filename='images/' ~ product.id ~ '.png') }}"
-                        alt="{{ product.name }}"
-                        onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/default.png') }}'">
+                <div class="image-wrapper">
+                     <img src="{{ url_for('static', filename='images/' ~ product.id ~ '.png') }}"
+                             alt="{{ product.name }}"
+                             onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/default.png') }}'">
+                    
+
+                        {% if product.sale %}
+                        <img class="sale-icon" 
+                            src="{{ url_for('static', filename='images/sale.png') }}" 
+                            alt="Sale">
+                            {% endif %}
+                </div>
+
+            </div>
+                  
                   <h2 class="product-name">{{ product.name }}</h2> 
                   <p class="product-feature">Price: ${{ '%.2f'| format(product.price) }}</p>
-                  
-                   <div class="card-actions">
+                  <div class="rating" data-rating="{{ product.rating }}">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                   
+                  <div class="card-actions">
                       <button class="btn btn-details"
                          data-name="{{ product.name|e }}"
                          data-price="{{ '%.2f'| format(product.price) }}"
