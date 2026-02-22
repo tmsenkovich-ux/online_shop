@@ -17,12 +17,20 @@ def create_app(): # створюємо додаток
         config = json.load(f)
     app.config.update(config)
     # Set up SQLAlchemy with absolute DB path
-    db_path = os.path.abspath(os.path.join(base_dir, config['DB_PATH']))
-    # Ensure the DB directory exists so SQLite can create the file
-    db_dir = os.path.dirname(db_path)
-    if not os.path.exists(db_dir):
-        os.makedirs(db_dir, exist_ok=True)
-    app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}"
+    # Use DATABASE_URL env variable for Postgres if set, else fallback to SQLite
+    database_url = os.environ.get('DATABASE_URL')
+    db_path = None
+    if database_url:
+        print ("DB URL is set. Postgres DB")
+        app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+    else:
+        print ("DB URL is NOT set. SQLite DB")
+        db_path = os.path.abspath(os.path.join(base_dir, config['DB_PATH']))
+        db_dir = os.path.dirname(db_path)
+        if not os.path.exists(db_dir):
+            os.makedirs(db_dir, exist_ok=True)
+        app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}"
+
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
     _ensure_columns(db_path, 'products', { 'description': 'TEXT', 'created_at': 'DATETIME', 
