@@ -25,7 +25,14 @@ document.addEventListener('DOMContentLoaded', function() {
     return `
       <p><strong>Category:</strong> ${attrs.category || '—'}
       • <strong>Rating:</strong> ${attrs.rating || '—'}
-      • <strong>Sale:</strong> ${attrs.sale || 'False'}
+      <div class="rating" data-rating="${attrs.rating || 0}">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+      </div>
+
       • <strong>Active:</strong> ${attrs.active || 'False'}
       </p>
     `;
@@ -52,7 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
       modalDesc.textContent = attrs.description || 'No description';
       modalMeta.innerHTML = buildMetaHTML(attrs);
 
-
+      const ratingDiv = modal.querySelector('.rating');
+      updateRatingStars(ratingDiv);
       openModal();
     });
   });

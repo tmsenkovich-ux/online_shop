@@ -208,14 +208,15 @@ h1 {
 
 .rating .star {
   font-size: 24px;
-  color: #ddd;
+  
+  color: #8183fa;
   cursor: default;
 }
 
 
 /* Заповнена зірка */
 .rating .star.full {
-  color: #494bd6;
+  color: #011e6e;
 }
 
 
@@ -224,8 +225,8 @@ h1 {
 
 .sale-icon {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: -200px;
+  right: 90px;
   width: 30px !important;
   height: auto !important;
   transform: rotate(-10deg);

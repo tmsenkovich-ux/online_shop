@@ -1,5 +1,4 @@
-<script src="{{ url_for('static', filename='modal.js') }}"></script>
-<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
 
 function updateRatingStars(ratingDiv) {
   const rating = parseFloat(ratingDiv.getAttribute('data-rating')) || 0;
